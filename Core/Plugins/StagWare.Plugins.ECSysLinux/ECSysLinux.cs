@@ -111,7 +111,7 @@ namespace StagWare.Plugins.ECSysLinux
 
                 if (this.stream == null)
                 {
-                    int fd = Syscall.open(EC0IOPath, OpenFlags.O_RDWR | OpenFlags.O_EXCL);
+                    int fd = Syscall.open(EC0IOPath, OpenFlags.O_RDWR);
 
                     if (fd == -1)
                     {

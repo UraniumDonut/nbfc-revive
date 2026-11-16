@@ -76,7 +76,7 @@ namespace StagWare.Plugins
 
                 if(this.stream == null)
                 {
-                    int fd = Syscall.open(PortFilePath, OpenFlags.O_RDWR | OpenFlags.O_EXCL);
+                    int fd = Syscall.open(PortFilePath, OpenFlags.O_RDWR);
 
                     if (fd == -1)
                     {

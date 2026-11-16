@@ -34,9 +34,9 @@
           <FanSpeed>95</FanSpeed>
         </TemperatureThreshold>
         <TemperatureThreshold>
-          <UpThreshold>90</UpThreshold>
+          <UpThreshold>85</UpThreshold>
           <DownThreshold>71</DownThreshold>
-          <FanSpeed>95</FanSpeed>
+          <FanSpeed>100</FanSpeed>
         </TemperatureThreshold>
       </TemperatureThresholds>
       <FanSpeedPercentageOverrides />
@@ -69,9 +69,9 @@
           <FanSpeed>95</FanSpeed>
         </TemperatureThreshold>
         <TemperatureThreshold>
-          <UpThreshold>90</UpThreshold>
+          <UpThreshold>85</UpThreshold>
           <DownThreshold>71</DownThreshold>
-          <FanSpeed>95</FanSpeed>
+          <FanSpeed>100</FanSpeed>
         </TemperatureThreshold>
       </TemperatureThresholds>
       <FanSpeedPercentageOverrides />

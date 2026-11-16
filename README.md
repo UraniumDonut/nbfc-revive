@@ -33,13 +33,6 @@ In general the [NBFC Wiki](https://github.com/hirschmann/nbfc/wiki) is the first
 Every contribution, no matter how small it is, is welcome. Please read the [contribution guidelines](CONTRIBUTING.md) before creating a new issue or pull request.  
 You can also [buy hirschmann a beer](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HUALCC9HY9MKC) or [buy me a cockroach](https://buymeacoffee.com/UraniumDonut) if you like our work :)
 
-## Build status (Legacy)
-This is the status of NBFC-Legacy, not this version
-| Platform | CI service | Status |
-|---|---|---|
-| Linux | Travis | [![Travis](https://img.shields.io/travis/hirschmann/nbfc.svg)](https://travis-ci.org/hirschmann/nbfc) |
-| Windows | AppVeyor | [![AppVeyor](https://img.shields.io/appveyor/ci/hirschmann/nbfc.svg)](https://ci.appveyor.com/project/hirschmann/nbfc) |
-
 ## Credits
 
 Many thanks to everyone who submitted pull requests, created config files, donated, or in any other way contributed to this project. :yellow_heart:

@@ -35,8 +35,8 @@
     <!--.NET Framework check-->
     <PropertyRef Id="NETFRAMEWORK45"/>
 
-    <Condition Message="$(var.ProductName) requires .NET Framework 4.5 or greater.">
-      <![CDATA[NETFRAMEWORK45]]>
+    <Condition Message="$(var.ProductName) requires .NET Framework 4.8 or greater.">
+      <![CDATA[Installed OR (NETFRAMEWORK45 >= "#528040")]]>
     </Condition>
 
     <!--Program Icon-->

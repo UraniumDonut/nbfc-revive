@@ -10,7 +10,7 @@
     <RootNamespace>StagWare.Plugins.ECSysLinux</RootNamespace>
     <AssemblyName>StagWare.Plugins.ECSysLinux</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseLinux|AnyCPU'">
     <OutputPath>bin\Release\</OutputPath>

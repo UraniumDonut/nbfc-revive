@@ -24,7 +24,7 @@
     <Variable Name="InstallFolder" Type="string" Value="[ProgramFilesFolder]$(var.ProductName)"/>
     
     <Chain>
-      <PackageGroupRef Id="NetFx45Web"/>
+      <PackageGroupRef Id="NetFx48Web"/>
       <MsiPackage Compressed="yes" SourceFile="$(var.NbfcSetup.TargetPath)" Id="MsiPackage">        
         <MsiProperty Name="INSTALLFOLDER" Value="[InstallFolder]" />
       </MsiPackage>

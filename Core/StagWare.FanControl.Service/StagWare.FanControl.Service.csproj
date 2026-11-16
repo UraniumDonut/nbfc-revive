@@ -11,7 +11,7 @@
     <RootNamespace>StagWare.FanControl.Service</RootNamespace>
     <AssemblyName>StagWare.FanControl.Service</AssemblyName>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>False</WcfConfigValidationEnabled>
     <XsdCodeGenEnabled>False</XsdCodeGenEnabled>
     <TargetFrameworkProfile>

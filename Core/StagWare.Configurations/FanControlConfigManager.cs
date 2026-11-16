@@ -98,7 +98,7 @@ namespace StagWare.FanControl.Configurations
 
                 if (similarity >= 1)
                 {
-                    FanControlConfigV2 cfg = GetConfig(cleanCfgName);
+                    FanControlConfigV2 cfg = GetConfig(cfgName);
 
                     if ((cfg.FanConfigurations == null) || (cfg.FanConfigurations.Count == 0))
                     {
@@ -114,12 +114,12 @@ namespace StagWare.FanControl.Configurations
 
                         if (tuple.Item2 < similarity)
                         {
-                            dict[key] = new Tuple<string, double>(cleanCfgName, similarity);
+                            dict[key] = new Tuple<string, double>(cfgName, similarity);
                         }
                     }
                     else
                     {
-                        dict.Add(key, new Tuple<string, double>(cleanCfgName, similarity));
+                        dict.Add(key, new Tuple<string, double>(cfgName, similarity));
                     }
                 }
             }

@@ -102,6 +102,38 @@ namespace StagWare.FanControl.Configurations.Tests
             }
 
             [Fact]
+            public static void RecommendsConfigsWhoseNameContainsBrackets()
+            {
+                // Brackets are stripped before comparing the config name to the
+                // device model, but the config itself is still stored under its
+                // full name. Looking it up by the stripped name found nothing and
+                // threw a NullReferenceException, and the stripped name was also
+                // returned as the recommendation even though SelectConfig cannot
+                // accept it.
+                string cfgName = "RedmiBook 14 (TM1814)";
+
+                var cfgMan = new FanControlConfigManager(
+                    Environment.CurrentDirectory, ".xml", new MockFileSystem());
+
+                cfgMan.AddConfig(
+                    new FanControlConfigV2()
+                    {
+                        FanConfigurations = new List<FanConfiguration>()
+                        {
+                            new FanConfiguration()
+                        }
+                    },
+                    cfgName);
+
+                List<string> recommendations = cfgMan.RecommendConfigs("RedmiBook 14");
+
+                Assert.Contains(cfgName, recommendations);
+                Assert.True(
+                    cfgMan.SelectConfig(recommendations[0]),
+                    "A recommended config name must be selectable");
+            }
+
+            [Fact]
             public static void ReturnsEmptyListIfModelIsNull()
             {
                 var cfgMan = new FanControlConfigManager(

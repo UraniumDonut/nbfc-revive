@@ -66,6 +66,16 @@
     <util:CloseApplication Id="CloseNbfcClient" Target="NoteBookFanControl.exe" EndSessionMessage="yes" />
     <util:CloseApplication Id="CloseNbfcClientOld" Target="NoteBook FanControl.exe" EndSessionMessage="yes" />
 
+    <!--Stop NbfcService before InstallValidate: if Restart Manager is disabled by policy, the built-in
+        FilesInUse check reports the running service (and every process with a same-named DLL loaded)
+        and blocks the uninstall. StopServices would only stop it later.-->
+    <SetProperty Id="WixQuietExec64CmdLine" Value="&quot;[System64Folder]net.exe&quot; stop NbfcService"
+                 Before="StopNbfcServiceEarly" Sequence="execute">REMOVE~="ALL" OR WIX_UPGRADE_DETECTED</SetProperty>
+    <CustomAction Id="StopNbfcServiceEarly" BinaryKey="WixCA" DllEntry="WixQuietExec64" Execute="immediate" Return="ignore" />
+    <InstallExecuteSequence>
+      <Custom Action="StopNbfcServiceEarly" Before="InstallValidate">REMOVE~="ALL" OR WIX_UPGRADE_DETECTED</Custom>
+    </InstallExecuteSequence>
+
     <!--Features-->
     <Feature Id="NoteBookFanControl" Title="$(var.ProductName)" Level="1">
       <ComponentGroupRef Id="Application" />

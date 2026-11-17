@@ -39,58 +39,32 @@
       <![CDATA[Installed OR (NETFRAMEWORK45 >= "#528040")]]>
     </Condition>
 
+    <!--64-bit Windows check (PawnIO and LibreHardwareMonitorLib are x64 only)-->
+    <Condition Message="$(var.ProductName) 2.0 requires 64-bit Windows.">
+      <![CDATA[Installed OR VersionNT64]]>
+    </Condition>
+
+    <!--PawnIO check (the bootstrapper installs PawnIO before this package)-->
+    <Property Id="PAWNIOVERSION">
+      <RegistrySearch Id="PawnIOVersionSearch"
+                      Root="HKLM"
+                      Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\PawnIO"
+                      Name="DisplayVersion"
+                      Type="raw"
+                      Win64="yes" />
+    </Property>
+
+    <Condition Message="$(var.ProductName) requires the PawnIO driver. Please install it using NoteBookFanControl.setup.exe, or from https://pawnio.eu first.">
+      <![CDATA[Installed OR PAWNIOVERSION]]>
+    </Condition>
+
     <!--Program Icon-->
     <Icon Id="fan.ico" SourceFile="$(var.NbfcClient.ProjectDir)fan.ico" />
     <Property Id="ARPPRODUCTICON" Value="fan.ico" />
 
-    <!--DriverSetupAction-->
-    <Binary Id="DriverSetupWixAction.CA.dll" 
-            SourceFile="$(var.DriverSetupWixAction.TargetDir)DriverSetupWixAction.CA.dll"/>
-    <CustomAction Id="InstallDriver" 
-                  BinaryKey="DriverSetupWixAction.CA.dll" 
-                  DllEntry="InstallDriver" 
-                  Execute="deferred"
-                  Impersonate="no" 
-                  Return="check" 
-                  HideTarget="no" 
-                  TerminalServerAware="no"/>
-    
-    <CustomAction Id="UninstallDriver" 
-                  BinaryKey="DriverSetupWixAction.CA.dll" 
-                  DllEntry="UninstallDriver" 
-                  Execute="deferred"
-                  Impersonate="no" 
-                  Return="ignore" 
-                  HideTarget="no" 
-                  TerminalServerAware="no"/>
-
-    <!--Set custom action properties-->
-    <CustomAction Id="SetInstallFolderForInstallDriver" 
-                  Property="InstallDriver" 
-                  Value="INSTALLFOLDER=[INSTALLFOLDER]"
-                  Return="check" 
-                  Execute="immediate"/>
-    
-    <CustomAction Id="SetInstallFolderForUninstallDriver" 
-                  Property="UninstallDriver" 
-                  Value="INSTALLFOLDER=[INSTALLFOLDER]"
-                  Return="check" 
-                  Execute="immediate"/>
-    
     <!--Close NbfcClient before installation-->
     <util:CloseApplication Id="CloseNbfcClient" Target="NoteBookFanControl.exe" EndSessionMessage="yes" />
     <util:CloseApplication Id="CloseNbfcClientOld" Target="NoteBook FanControl.exe" EndSessionMessage="yes" />
-
-    <!--Do actions-->
-    <InstallExecuteSequence>      
-      <Custom Action="SetInstallFolderForUninstallDriver" Before="UninstallDriver"/>
-      <Custom Action="UninstallDriver" After="DeleteServices"/>
-
-      <Custom Action="SetInstallFolderForInstallDriver" Before ="InstallDriver"/>
-      <Custom Action="InstallDriver" After="InstallFiles">
-        NOT REMOVE="ALL"
-      </Custom>
-    </InstallExecuteSequence>
 
     <!--Features-->
     <Feature Id="NoteBookFanControl" Title="$(var.ProductName)" Level="1">

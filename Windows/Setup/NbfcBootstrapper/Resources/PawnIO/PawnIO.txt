@@ -1,0 +1,5 @@
+PawnIO_setup.exe is the official, signed PawnIO 2.2.0 installer (https://pawnio.eu),
+redistributed unmodified. Release: https://github.com/namazso/PawnIO.Setup/releases/tag/2.2.0
+PawnIO is Copyright (C) namazso and licensed under the GNU General Public License v2.
+Source: https://github.com/namazso/PawnIO
+SHA-256: 1f519a22e47187f70a1379a48ca604981c4fcf694f4e65b734aaa74a9fba3032

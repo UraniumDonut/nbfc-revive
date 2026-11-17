@@ -28,6 +28,10 @@
       <HintPath>$(WixExtDir)\WixBalExtension.dll</HintPath>
       <Name>WixBalExtension</Name>
     </WixExtension>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
     <WixExtension Include="WixNetFxExtension">
       <HintPath>$(WixExtDir)\WixNetFxExtension.dll</HintPath>
       <Name>WixNetFxExtension</Name>
@@ -58,6 +62,8 @@
     <Content Include="Resources\Bundle2Theme.xml" />
     <Content Include="Resources\logo.png" />
     <Content Include="Resources\logoside.png" />
+    <Content Include="Resources\PawnIO\PawnIO_setup.exe" />
+    <Content Include="Resources\PawnIO\PawnIO.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\HyperlinkTheme.wxl" />

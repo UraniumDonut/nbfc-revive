@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   
   <!--Includes-->
   <?include $(var.NbfcSetup.ProjectDir)Constants.wxi ?>
@@ -22,9 +24,31 @@
     <WixVariable Id="WixStdbaLicenseUrl" Value="" /> 
     
     <Variable Name="InstallFolder" Type="string" Value="[ProgramFilesFolder]$(var.ProductName)"/>
+
+    <!--PawnIO and LibreHardwareMonitorLib are x64 only-->
+    <bal:Condition Message="$(var.ProductName) 2.0 requires 64-bit Windows.">VersionNT64</bal:Condition>
+
+    <util:RegistrySearch Id="PawnIOVersionSearch"
+                         Root="HKLM"
+                         Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\PawnIO"
+                         Value="DisplayVersion"
+                         Result="value"
+                         Win64="yes"
+                         Variable="PawnIOVersion" />
     
     <Chain>
       <PackageGroupRef Id="NetFx48Web"/>
+
+      <!--PawnIO driver (https://pawnio.eu), shared with other tools, therefore never uninstalled-->
+      <ExePackage Id="PawnIO"
+                  DisplayName="PawnIO driver"
+                  Compressed="yes"
+                  PerMachine="yes"
+                  Permanent="yes"
+                  Vital="yes"
+                  SourceFile="$(var.ProjectDir)Resources\PawnIO\PawnIO_setup.exe"
+                  InstallCommand="-install -silent"
+                  DetectCondition="PawnIOVersion AND PawnIOVersion &gt;= v2.0.0" />
       <MsiPackage Compressed="yes" SourceFile="$(var.NbfcSetup.TargetPath)" Id="MsiPackage">        
         <MsiProperty Name="INSTALLFOLDER" Value="[InstallFolder]" />
       </MsiPackage>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include>
   <!--Constants-->
-  <?define Manufacturer = "Stefan Hirschmann - StagWare"?>
+  <?define Manufacturer = "Stefan Hirschmann / UraniumDonut"?>
   <?define CompanyName = "StagWare"?>
   <?define ProductName = "NoteBook FanControl"?>
   <?define UpgradeGuid = "5602C3F6-014B-41DD-B89F-14BCB1701B57"?>

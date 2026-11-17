@@ -183,7 +183,7 @@ namespace StagWare.Hardware
 
             if (sensorsTotal <= 0)
             {
-                throw new PlatformNotSupportedException("Failed to access CPU temperature sensors(s).");
+                throw new PlatformNotSupportedException("Failed to access CPU temperature sensors.");
             }
 
             this.cpuTempSensors = cpuTempSensors;
@@ -210,7 +210,7 @@ namespace StagWare.Hardware
 
             if (sensorsTotal <= 0)
             {
-                throw new PlatformNotSupportedException("Failed to access GPU temperature sensors(s).");
+                throw new PlatformNotSupportedException("Failed to access GPU temperature sensors.");
             }
         }
 

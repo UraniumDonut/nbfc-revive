@@ -54,7 +54,7 @@
                 Foreground="{StaticResource HeaderBrush}"/>
 
             <TextBox 
-                Text="{Binding SelectedConfig}" 
+                Text="{Binding SelectedConfig, Mode=OneWay}" 
                 Height="23"
                 TextWrapping="Wrap" 
                 HorizontalAlignment="Stretch"

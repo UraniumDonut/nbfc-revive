@@ -57,7 +57,7 @@
             </Label>
             
             <ProgressBar 
-                Value="{Binding CurrentFanSpeed}" 
+                Value="{Binding CurrentFanSpeed, Mode=OneWay}" 
                 Height="6"
                 Margin="10,79,65,0" 
                 VerticalAlignment="Top" />

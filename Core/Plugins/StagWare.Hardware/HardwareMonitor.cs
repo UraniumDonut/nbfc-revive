@@ -1,4 +1,4 @@
-﻿using OpenHardwareMonitor.Hardware;
+﻿using LibreHardwareMonitor.Hardware;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +25,7 @@ namespace StagWare.Hardware
         private HardwareMonitor()
         {
             this.computer = new Computer();
-            this.computer.CPUEnabled = true;
+            this.computer.IsCpuEnabled = true;
             this.computer.Open();
         }
 
@@ -128,6 +128,7 @@ namespace StagWare.Hardware
         private static ISensor[] GetCpuTemperatureSensors(IHardware cpu)
         {
             var sensors = new List<ISensor>();
+            ISensor tctl = null;
             cpu.Update();
 
             foreach (ISensor s in cpu.Sensors)
@@ -140,11 +141,26 @@ namespace StagWare.Hardware
                     {
                         return new ISensor[] { s };
                     }
-                    else
+                    else if (name.Contains("TCTL"))
                     {
+                        // AMD Zen: "Core (Tctl/Tdie)" or "Core (Tctl)"
+                        if (tctl == null || name.Contains("TCTL/TDIE"))
+                        {
+                            tctl = s;
+                        }
+                    }
+                    else if (!name.Contains("DISTANCE") && !name.Contains("MAX")
+                        && !name.Contains("AVERAGE") && !name.Contains("TDIE"))
+                    {
+                        // Skip derived sensors, average the core sensors only
                         sensors.Add(s);
                     }
                 }
+            }
+
+            if (tctl != null)
+            {
+                return new ISensor[] { tctl };
             }
 
             return sensors.ToArray();
@@ -152,28 +168,34 @@ namespace StagWare.Hardware
 
         private void InitializeCpuSensors()
         {
-            this.cpus = GetHardware(HardwareType.CPU);
-            this.cpuTempSensors = new ISensor[this.cpus.Length][];
+            IHardware[] cpus = GetHardware(HardwareType.Cpu);
+            var cpuTempSensors = new ISensor[cpus.Length][];
             int sensorsTotal = 0;
 
-            for (int i = 0; i < this.cpus.Length; i++)
+            for (int i = 0; i < cpus.Length; i++)
             {
-                ISensor[] sensors = GetCpuTemperatureSensors(this.cpus[i]);
-                sensorsTotal += sensors.Length;
-                this.cpuTempSensors[i] = sensors;
+                ISensor[] sensors = GetCpuTemperatureSensors(cpus[i]);
+                cpuTempSensors[i] = sensors;
+
+                // Sensors without a value can't be read (e.g. PawnIO is not installed)
+                sensorsTotal += sensors.Count(x => x.Value.HasValue);
             }
 
             if (sensorsTotal <= 0)
             {
                 throw new PlatformNotSupportedException("Failed to access CPU temperature sensors(s).");
             }
+
+            this.cpuTempSensors = cpuTempSensors;
+            this.cpus = cpus;
         }
 
         private void InitializeGpuSensors()
         {
             var list = new List<IHardware>();
-            list.AddRange(GetHardware(HardwareType.GpuAti));
+            list.AddRange(GetHardware(HardwareType.GpuAmd));
             list.AddRange(GetHardware(HardwareType.GpuNvidia));
+            list.AddRange(GetHardware(HardwareType.GpuIntel));
 
             this.gpus = list.ToArray();
             this.gpuTempSensors = new ISensor[this.gpus.Length][];

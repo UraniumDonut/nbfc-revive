@@ -94,21 +94,95 @@
         </File>
       </Component>
 
-      <Component Id="Plg.OpenHardwareMonitorLib" 
-                 Guid="0AF2121F-BDA3-40AC-A719-9849AE8A0E5B">
-        <File Id="OpenHardwareMonitorLib.dll" 
-              Name="OpenHardwareMonitorLib.dll" 
-              DiskId="1" 
-              Vital="yes" 
+      <!--LibreHardwareMonitorLib (x64 only) and its dependencies-->
+      <Component Id="Plg.LibreHardwareMonitorLib"
+                 Guid="1D2BB372-A565-43FD-9FBC-E040E8D1E84A">
+        <File Id="LibreHardwareMonitorLib.dll"
+              Name="LibreHardwareMonitorLib.dll"
+              DiskId="1"
+              Vital="yes"
               KeyPath="yes"
-              Source="$(var.StagWare.Plugins.CpuTemperatureMonitor.TargetDir)OpenHardwareMonitorLib.dll">
+              Source="$(var.StagWare.Hardware.TargetDir)LibreHardwareMonitorLib.dll" />
+      </Component>
 
-          <?if $(var.Configuration) = "Release"?>
-          <netfx:NativeImage Id="OpenHardwareMonitorLib.NativeImage" 
-                             Priority="1" 
-                             Platform="all"/>
-          <?endif?>
-        </File>
+      <Component Id="Plg.BlackSharp.Core"
+                 Guid="4C0D6DB2-D4BC-4512-8664-AEFC2ECEF452">
+        <File Id="BlackSharp.Core.dll"
+              Name="BlackSharp.Core.dll"
+              DiskId="1"
+              Vital="yes"
+              KeyPath="yes"
+              Source="$(var.StagWare.Hardware.TargetDir)BlackSharp.Core.dll" />
+      </Component>
+
+      <Component Id="Plg.DiskInfoToolkit"
+                 Guid="A4C8B049-1B08-4A78-9B38-C204CA0B9D2B">
+        <File Id="DiskInfoToolkit.dll"
+              Name="DiskInfoToolkit.dll"
+              DiskId="1"
+              Vital="yes"
+              KeyPath="yes"
+              Source="$(var.StagWare.Hardware.TargetDir)DiskInfoToolkit.dll" />
+      </Component>
+
+      <Component Id="Plg.HidSharp"
+                 Guid="0AD8F2F0-F1AE-4013-91AD-695FFF9FA98A">
+        <File Id="HidSharp.dll"
+              Name="HidSharp.dll"
+              DiskId="1"
+              Vital="yes"
+              KeyPath="yes"
+              Source="$(var.StagWare.Hardware.TargetDir)HidSharp.dll" />
+      </Component>
+
+      <Component Id="Plg.RAMSPDToolkit_NDD"
+                 Guid="BF81E5BF-0310-4A8A-8B3A-D74DA64EDF2F">
+        <File Id="RAMSPDToolkit_NDD.dll"
+              Name="RAMSPDToolkit-NDD.dll"
+              DiskId="1"
+              Vital="yes"
+              KeyPath="yes"
+              Source="$(var.StagWare.Hardware.TargetDir)RAMSPDToolkit-NDD.dll" />
+      </Component>
+
+      <Component Id="Plg.System.Buffers"
+                 Guid="F5B1368A-5E0F-409E-A5DC-35C645B5A2F8">
+        <File Id="System.Buffers.dll"
+              Name="System.Buffers.dll"
+              DiskId="1"
+              Vital="yes"
+              KeyPath="yes"
+              Source="$(var.StagWare.Hardware.TargetDir)System.Buffers.dll" />
+      </Component>
+
+      <Component Id="Plg.System.Memory"
+                 Guid="3B3F1CA7-9B3C-4E9C-81F7-3E79ECE0E9CB">
+        <File Id="System.Memory.dll"
+              Name="System.Memory.dll"
+              DiskId="1"
+              Vital="yes"
+              KeyPath="yes"
+              Source="$(var.StagWare.Hardware.TargetDir)System.Memory.dll" />
+      </Component>
+
+      <Component Id="Plg.System.Numerics.Vectors"
+                 Guid="5DF362AC-AC23-48B8-A41A-479FB4DFB272">
+        <File Id="System.Numerics.Vectors.dll"
+              Name="System.Numerics.Vectors.dll"
+              DiskId="1"
+              Vital="yes"
+              KeyPath="yes"
+              Source="$(var.StagWare.Hardware.TargetDir)System.Numerics.Vectors.dll" />
+      </Component>
+
+      <Component Id="Plg.System.Runtime.CompilerServices.Unsafe"
+                 Guid="C05BDC7F-D9BF-4854-964E-931C16051E29">
+        <File Id="System.Runtime.CompilerServices.Unsafe.dll"
+              Name="System.Runtime.CompilerServices.Unsafe.dll"
+              DiskId="1"
+              Vital="yes"
+              KeyPath="yes"
+              Source="$(var.StagWare.Hardware.TargetDir)System.Runtime.CompilerServices.Unsafe.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>

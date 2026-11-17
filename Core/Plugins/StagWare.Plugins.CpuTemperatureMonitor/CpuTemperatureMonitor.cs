@@ -41,8 +41,11 @@ namespace StagWare.Plugins.Generic
         {
             if (!this.IsInitialized)
             {
-                this.IsInitialized = true;
                 this.hwMon = HardwareMonitor.Instance;
+
+                // Fail here if the sensors can't be read instead of returning NaN later
+                GetTemperature();
+                this.IsInitialized = true;
             }
         }
 

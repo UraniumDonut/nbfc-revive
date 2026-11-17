@@ -34,6 +34,34 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BlackSharp.Core, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\BlackSharp.Core.1.0.7\lib\net472\BlackSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DiskInfoToolkit, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\DiskInfoToolkit.1.1.2\lib\net472\DiskInfoToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="HidSharp, Version=2.6.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\HidSharp.2.6.4\lib\netstandard2.0\HidSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LibreHardwareMonitorLib, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\LibreHardwareMonitorLib.0.9.6\runtimes\win-x64\lib\net472\LibreHardwareMonitorLib.dll</HintPath>
+    </Reference>
+    <Reference Include="RAMSPDToolkit-NDD, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\RAMSPDToolkit-NDD.1.4.2\lib\net472\RAMSPDToolkit-NDD.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -57,13 +85,8 @@
     <EmbeddedResource Include="Resources\LpcACPIEC.bin">
       <LogicalName>StagWare.Hardware.Resources.LpcACPIEC.bin</LogicalName>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Resources\LpcACPIEC.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OpenHardwareMonitor\OpenHardwareMonitorLib.csproj">
-      <Project>{b0397530-545a-471d-bb74-027ae456df1a}</Project>
-      <Name>OpenHardwareMonitorLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

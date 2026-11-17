@@ -15,7 +15,7 @@ namespace StagWare.Plugins
     {
         #region Private Fields
 
-        HardwareMonitor hwMon;
+        PawnIOEmbeddedController ec;
 
         #endregion
 
@@ -27,19 +27,19 @@ namespace StagWare.Plugins
         {
             if (!this.IsInitialized)
             {
-                this.hwMon = HardwareMonitor.Instance;
-                this.IsInitialized = this.hwMon != null;
+                this.ec = new PawnIOEmbeddedController();
+                this.IsInitialized = true;
             }
         }
 
         public bool AcquireLock(int timeout)
         {
-            return this.hwMon.WaitIsaBusMutex(timeout);
+            return this.ec.WaitEcMutex(timeout);
         }
 
         public void ReleaseLock()
         {
-            this.hwMon.ReleaseIsaBusMutex();
+            this.ec.ReleaseEcMutex();
         }
 
         public void Dispose()
@@ -52,6 +52,13 @@ namespace StagWare.Plugins
             {
             }
 
+            if (this.ec != null)
+            {
+                this.ec.Dispose();
+                this.ec = null;
+            }
+
+            this.IsInitialized = false;
         }
 
         #endregion
@@ -60,12 +67,12 @@ namespace StagWare.Plugins
 
         protected override void WritePort(int port, byte value)
         {
-            this.hwMon.WriteIoPort(port, value);
+            this.ec.WritePort(port, value);
         }
 
         protected override byte ReadPort(int port)
         {
-            return this.hwMon.ReadIoPort(port);
+            return this.ec.ReadPort(port);
         }
 
         #endregion

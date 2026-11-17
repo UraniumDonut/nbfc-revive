@@ -1,0 +1,6 @@
+LpcACPIEC.bin is the signed LpcACPIEC module from PawnIO.Modules release 0.2.11
+(https://github.com/namazso/PawnIO.Modules), used unmodified.
+Copyright (C) 2023 namazso <admin@namazso.eu>
+Licensed under the GNU Lesser General Public License v2.1 or later.
+Source: https://github.com/namazso/PawnIO.Modules/blob/main/LpcACPIEC.p
+SHA-256: c38fd116e7aff4d1fdb0a494e296be0a6708e5a22fc72f14587442fb7f8f7906

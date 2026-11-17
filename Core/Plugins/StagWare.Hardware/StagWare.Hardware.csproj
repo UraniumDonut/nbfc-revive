@@ -50,7 +50,14 @@
       <Link>Properties\CommonAssemblyVersion.cs</Link>
     </Compile>
     <Compile Include="HardwareMonitor.cs" />
+    <Compile Include="PawnIOEmbeddedController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\LpcACPIEC.bin">
+      <LogicalName>StagWare.Hardware.Resources.LpcACPIEC.bin</LogicalName>
+    </EmbeddedResource>
+    <None Include="Resources\LpcACPIEC.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenHardwareMonitor\OpenHardwareMonitorLib.csproj">

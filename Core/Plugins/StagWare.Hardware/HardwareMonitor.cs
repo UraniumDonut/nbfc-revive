@@ -100,30 +100,6 @@ namespace StagWare.Hardware
 
         #endregion
 
-        #region Public Methods
-
-        public bool WaitIsaBusMutex(int timeout)
-        {
-            return this.computer.WaitIsaBusMutex(timeout);
-        }
-
-        public void ReleaseIsaBusMutex()
-        {
-            this.computer.ReleaseIsaBusMutex();
-        }
-
-        public void WriteIoPort(int port, byte value)
-        {
-            this.computer.WriteIoPort(port, value);
-        }
-
-        public byte ReadIoPort(int port)
-        {
-            return this.computer.ReadIoPort(port);
-        }
-
-        #endregion
-
         #region Private Methods
 
         private static double GetAverageTemperature(ISensor[] sensors)

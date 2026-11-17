@@ -79,7 +79,7 @@ namespace StagWare.Hardware
         {
             get
             {
-                if (this.cpus == null)
+                if (this.gpus == null)
                 {
                     InitializeGpuSensors();
                 }
@@ -90,7 +90,7 @@ namespace StagWare.Hardware
                 {
                     this.gpus[i].Update();
                     results[i] = new KeyValuePair<string, double>(
-                        this.cpus[i].Name,
+                        this.gpus[i].Name,
                         GetAverageTemperature(this.gpuTempSensors[i]));
                 }
 
